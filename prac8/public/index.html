@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gym Rep Counter 🏋️‍♂️</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🏋️‍♂️ Gym Rep Counter</h1>
+        <p class="subtitle">Track your exercise repetitions</p>
+      </header>
+
+      <main>
+        <!-- Exercise Selection -->
+        <div class="exercise-section">
+          <label for="exercise-input" class="exercise-label">Exercise:</label>
+          <div class="exercise-input-group">
+            <input
+              type="text"
+              id="exercise-input"
+              class="exercise-input"
+              placeholder="Enter exercise name"
+              value="General Exercise"
+            />
+            <button id="update-exercise" class="btn btn-secondary">
+              Update
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Counter Display -->
+        <div class="counter-display">
+          <div class="current-exercise" id="current-exercise">
+            General Exercise
+          </div>
+          <div class="counter-value" id="counter-value">0</div>
+          <div class="counter-label">Reps</div>
+        </div>
+
+        <!-- Counter Controls -->
+        <div class="controls">
+          <button id="decrement-btn" class="btn btn-decrement">-1</button>
+          <button id="increment-btn" class="btn btn-increment">+1</button>
+        </div>
+
+        <!-- Quick Add Controls -->
+        <div class="quick-controls">
+          <button class="btn btn-quick" data-amount="5">+5</button>
+          <button class="btn btn-quick" data-amount="10">+10</button>
+          <button class="btn btn-reset" id="reset-btn">Reset</button>
+        </div>
+
+        <!-- Counter Management -->
+        <div class="counter-management">
+          <h3>Multiple Counters</h3>
+          <div class="counter-input-group">
+            <input
+              type="text"
+              id="new-counter-id"
+              placeholder="Counter name (e.g., pushups)"
+              class="counter-input"
+            />
+            <input
+              type="text"
+              id="new-counter-exercise"
+              placeholder="Exercise name"
+              class="counter-input"
+            />
+            <button id="create-counter" class="btn btn-secondary">
+              Create
+            </button>
+          </div>
+
+          <div class="counter-list" id="counter-list">
+            <!-- Counters will be populated here -->
+          </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-label">Last Updated:</span>
+            <span class="stat-value" id="last-updated">-</span>
+          </div>
+        </div>
+      </main>
+
+      <!-- Loading Indicator -->
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <span>Loading...</span>
+      </div>
+
+      <!-- Error Messages -->
+      <div class="error-message" id="error-message"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

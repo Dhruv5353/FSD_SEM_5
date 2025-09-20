@@ -1,0 +1,28 @@
+[
+  {
+    "_id": "6yy3qhbqhmfpjqelv",
+    "title": "Welcome to Notes API",
+    "content": "This is your first note! This API is currently using JSON file storage for quick testing.",
+    "priority": "high",
+    "tags": [
+      "welcome",
+      "api"
+    ],
+    "createdAt": "2025-09-18T15:09:04.243Z",
+    "updatedAt": "2025-09-18T15:09:04.244Z",
+    "isArchived": false
+  },
+  {
+    "_id": "2rnth23ramfpjqelw",
+    "title": "Shopping List",
+    "content": "Milk, Bread, Eggs, Apples, Chicken, Rice",
+    "priority": "low",
+    "tags": [
+      "personal",
+      "shopping"
+    ],
+    "createdAt": "2025-09-18T15:09:04.244Z",
+    "updatedAt": "2025-09-18T15:09:04.244Z",
+    "isArchived": false
+  }
+]

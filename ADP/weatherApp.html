@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #f5f6fa;
+        font-family: Arial, sans-serif;
+      }
+      .weather {
+        background: #fff;
+        padding: 32px 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        min-width: 320px;
+      }
+      h1 {
+        margin-bottom: 24px;
+        color: #273c75;
+        font-size: 2rem;
+      }
+      input[type="text"] {
+        padding: 8px 12px;
+        border: 1px solid #dcdde1;
+        border-radius: 4px;
+        font-size: 1rem;
+        margin-bottom: 12px;
+        width: 80%;
+        box-sizing: border-box;
+      }
+      button {
+        padding: 8px 20px;
+        background: #0097e6;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-left: 8px;
+        transition: background 0.2s;
+      }
+      button:hover {
+        background: #40739e;
+      }
+      .output {
+        margin-top: 20px;
+      }
+      .error {
+        color: red;
+        margin-top: 8px;
+      }
+      #city {
+        font-weight: bold;
+        color: #353b48;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="weather">
+      <h1>Weather Checher</h1>
+
+      <input id="cityName" type="text" placeholder="Enter the city name" />
+
+      <button onclick="generateTemp()">Get Weather</button>
+
+      <div class="output">
+        <p id="city"></p>
+        <p class="error" id="error"></p>
+      </div>
+    </div>
+  </body>
+  <script>
+    const cityInput = document.getElementById("cityName");
+
+    function generateTemp() {
+      if (cityInput.value.trim() === "") {
+        document.getElementById("error").innerHTML = "Please enter city.";
+        document.getElementById("city").innerHTML = "";
+      } else {
+        document.getElementById("error").innerHTML = "";
+        document.getElementById("city").innerHTML =
+          "Temperature in " + cityInput.value + " is: " + randomWeather();
+      }
+    }
+
+    function randomWeather() {
+      let a = 50;
+      const randomTemp = Math.floor(Math.random() * a);
+      return randomTemp + "°C";
+    }
+  </script>
+</html>

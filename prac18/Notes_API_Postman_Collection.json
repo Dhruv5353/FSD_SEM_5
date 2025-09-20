@@ -1,0 +1,370 @@
+{
+  "info": {
+    "name": "Notes API - Mobile Backend",
+    "description": "RESTful API for notes-taking mobile app using Express.js and MongoDB",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5001",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health & Documentation",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "health"]
+            }
+          }
+        },
+        {
+          "name": "API Documentation",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api",
+              "host": ["{{baseUrl}}"],
+              "path": ["api"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notes CRUD",
+      "item": [
+        {
+          "name": "Create Note",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"My First Note\",\n  \"content\": \"This is the content of my first note. It contains important information about the project.\",\n  \"tags\": [\"personal\", \"important\", \"project\"],\n  \"priority\": \"high\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/notes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"]
+            }
+          }
+        },
+        {
+          "name": "Get All Notes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"]
+            }
+          }
+        },
+        {
+          "name": "Get All Notes with Pagination",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes?page=1&limit=5&sortBy=createdAt&sortOrder=desc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "5" },
+                { "key": "sortBy", "value": "createdAt" },
+                { "key": "sortOrder", "value": "desc" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Note by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes/{{noteId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes", "{{noteId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Note",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Note Title\",\n  \"content\": \"This is the updated content with new information and details.\",\n  \"tags\": [\"updated\", \"modified\", \"important\"],\n  \"priority\": \"medium\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/notes/{{noteId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes", "{{noteId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Note",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes/{{noteId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes", "{{noteId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Archive & Search",
+      "item": [
+        {
+          "name": "Toggle Archive Status",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes/{{noteId}}/archive",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes", "{{noteId}}", "archive"]
+            }
+          }
+        },
+        {
+          "name": "Get High Priority Notes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes/priority/high",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes", "priority", "high"]
+            }
+          }
+        },
+        {
+          "name": "Get Medium Priority Notes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes/priority/medium",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes", "priority", "medium"]
+            }
+          }
+        },
+        {
+          "name": "Search Notes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes/search/important",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes", "search", "important"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Filter & Query",
+      "item": [
+        {
+          "name": "Filter by Priority",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes?priority=high",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"],
+              "query": [{ "key": "priority", "value": "high" }]
+            }
+          }
+        },
+        {
+          "name": "Search with Query Parameter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes?search=project",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"],
+              "query": [{ "key": "search", "value": "project" }]
+            }
+          }
+        },
+        {
+          "name": "Get Archived Notes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes?archived=true",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"],
+              "query": [{ "key": "archived", "value": "true" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sample Data Creation",
+      "item": [
+        {
+          "name": "Create Sample Note 1 - Meeting",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Meeting Notes\",\n  \"content\": \"Discussed project timeline and deliverables. Need to follow up on resource allocation and budget planning.\",\n  \"tags\": [\"work\", \"meeting\", \"project\"],\n  \"priority\": \"high\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/notes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"]
+            }
+          }
+        },
+        {
+          "name": "Create Sample Note 2 - Shopping",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Shopping List\",\n  \"content\": \"Grocery items needed: Milk, Bread, Eggs, Apples, Bananas, Chicken, Rice, and cleaning supplies.\",\n  \"tags\": [\"personal\", \"shopping\", \"groceries\"],\n  \"priority\": \"low\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/notes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"]
+            }
+          }
+        },
+        {
+          "name": "Create Sample Note 3 - Books",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Book Recommendations\",\n  \"content\": \"Collection of interesting book recommendations from friends and colleagues. Include both fiction and non-fiction titles.\",\n  \"tags\": [\"books\", \"reading\", \"personal\"],\n  \"priority\": \"medium\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/notes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"]
+            }
+          }
+        },
+        {
+          "name": "Create Sample Note 4 - Travel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Travel Planning\",\n  \"content\": \"Research destinations for summer vacation. Consider budget, weather, activities, and accommodation options.\",\n  \"tags\": [\"travel\", \"vacation\", \"planning\"],\n  \"priority\": \"medium\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/notes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "exec": [
+          "// This script runs before each request",
+          "console.log('Making request to:', pm.request.url);"
+        ],
+        "type": "text/javascript"
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "exec": [
+          "// Basic test for successful responses",
+          "pm.test('Status code is success', function () {",
+          "    pm.response.to.have.status.oneOf([200, 201]);",
+          "});",
+          "",
+          "pm.test('Response has success property', function () {",
+          "    var jsonData = pm.response.json();",
+          "    pm.expect(jsonData).to.have.property('success');",
+          "});",
+          "",
+          "// Store note ID for use in other requests",
+          "if (pm.response.code === 201) {",
+          "    var responseJson = pm.response.json();",
+          "    if (responseJson.data && responseJson.data._id) {",
+          "        pm.environment.set('noteId', responseJson.data._id);",
+          "        console.log('Stored note ID:', responseJson.data._id);",
+          "    }",
+          "}"
+        ],
+        "type": "text/javascript"
+      }
+    }
+  ]
+}

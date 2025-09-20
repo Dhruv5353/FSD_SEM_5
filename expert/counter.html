@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #hello {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        input[type="button"] {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <p id="hello"></p>
+    <input type="button" value="increment" onclick="increment()">
+    <input type="button" value="decrement" onclick="decrement()">
+    <input type="button" value="reset" onclick="reset()">
+
+    <script>
+        let count = Number(localStorage.getItem('counter')) || 0;
+        const hello = document.getElementById('hello');
+
+        function updateDisplay() {
+            hello.textContent = count;
+        }
+
+        function increment() {
+            count++;
+            localStorage.setItem('counter', count);
+            updateDisplay();
+        }
+
+        function decrement() {
+            count--;
+            localStorage.setItem('counter', count);
+            updateDisplay();
+        }
+
+        function reset() {
+            count = 0;
+            localStorage.setItem('counter', count);
+            updateDisplay();
+        }
+
+        // Initial display
+        updateDisplay();
+    </script>
+</body>
+</html>

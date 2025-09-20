@@ -1,0 +1,85 @@
+nodejs?
+modules?
+3 type of modules   
+
+core module
+http,fs,path etc
+
+ local module
+ we acn create custom modules
+ export module.export
+
+third party module
+download from internet
+npmjs.com
+-------------------------------------------------------------------------------------------
+what is localstorage?
+-> used to  store data in client pc.(browser)
+	data will be store in keyvalue pair
+	value will be string , Boolean and numbers
+
+
+limitation:
+sync
+port=3000
+
+store?
+-> 	userid
+	token
+	highscore
+	auth
+	
+
+methods:
+localstorage.setitem()
+
+nodejs?
+modules?
+3 types:
+		core module
+			http,fs,path etc
+		local module
+			we  can create custom module
+			export module.export
+		third party module
+			download from internet
+			npmjs.com
+			60k+
+
+pakage.json file:
+	meta data of application
+	store pakage name and their version
+methods to create package.json file
+
+npm init
+npm init -y
+
+npm i nodemon
+npm install nodemon
+npm i nodemon -g     globel save in computer
+
+npm i nodemon@2.1
+npm i nodemon express nodemailer
+
+npm uninstall nodemon
+npm un nodemon
+npm un nodemon -g
+
+npm update nodemon
+
+-global level:
+run command win+r
+%AppDate%
+
+npm i nodemon -g
+
+-project level
+	inside project write below command
+npm i nodemon
+
+-----------------------------------------------------------------------------
+
+EXPRESS JS 
+
+installation -> npm install express
+

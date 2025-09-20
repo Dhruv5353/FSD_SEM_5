@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.welcome-card {
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-title {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 1.1em;
+  margin-bottom: 30px;
+}
+
+.time-display {
+  margin-bottom: 30px;
+}
+
+.date-section,
+.time-section {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.date-label,
+.time-label {
+  font-size: 1em;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.date-value,
+.time-value {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.digital-clock {
+  background: #333;
+  color: #00ff00;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.clock-display {
+  font-family: "Courier New", monospace;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.welcome-footer {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.welcome-footer p {
+  margin-bottom: 5px;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 3px;
+}
+
+/* Simple responsive design */
+@media (max-width: 600px) {
+  .welcome-card {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .welcome-title {
+    font-size: 2em;
+  }
+
+  .clock-display {
+    font-size: 2em;
+  }
+}

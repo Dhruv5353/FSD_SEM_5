@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <h1><%= title %></h1>
+
+  <% if (students.length === 0) { %>
+    <p>No students found.</p>
+  <% } else { %>
+    <table border="1" cellpadding="8">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Mobile</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% students.forEach(student => { %>
+          <tr>
+            <td><%= student.name %></td>
+            <td><%= student.mobile %></td>
+            <td><%= student.email %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localstorage</title>
+</head>
+<script>
+
+function saveObj()
+{
+    var a ={
+        name: "Priyanshu",
+        city: "Vadodara",
+        age: 20,
+        gender : "male",
+        mobile: 1234567890
+    }
+    //convert object to string
+    var str = JSON.stringify(a);
+    //save string in localStorage
+    localStorage.setItem("user", str);
+}
+
+function saveData(){
+    localStorage.setItem("name", "Priaynshu");
+    localStorage.setItem("city", "Vadodara");
+    document.getElementById('ans').innerHTML = "Data saved in localStorage";
+}
+function getData(){
+    var a = localStorage.getItem("name");
+    console.log("Name is: " + a);
+    document.getElementById('ans').innerHTML = "Name is: " + a;
+}
+function getObjData(){
+    var a = localStorage.getItem("user");
+    //convert string to object
+    var obj = JSON.parse(a);
+    document.getElementById('ans').innerHTML = "Name is: " + obj.name + "<br>City is: " + obj.city + "<br>Age is: " + obj.age}
+
+function removeData(){
+    localStorage.removeItem("name");
+    localStorage.removeItem("city");
+    document.getElementById('ans').innerHTML = "Data removed from localStorage";
+}
+function removeAll(){
+    localStorage.clear();
+    document.getElementById('ans').innerHTML = "All data removed";
+}
+
+</script>
+
+<body>
+    <p id="ans"></p>
+    <input type="button" value="Save Data" onclick="saveData()">
+    <input type="button" value="Save Object" onclick="saveObj()">    
+    <input type="button" value="Get Data" onclick="getData()">
+    <input type="button" value="Get Object Data" onclick="getObjData()">
+    <input type="button" value="Remove" onclick="removeData()">
+    <input type="button" value="Remove all" onclick="removeAll()">
+
+    <footer>
+        <p>Copyright Priyanshu</p>
+    </footer>
+</body>
+</html>

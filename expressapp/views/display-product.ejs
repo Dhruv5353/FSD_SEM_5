@@ -1,0 +1,28 @@
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Details</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    <% for(var i=0;i<product.length;i++){ %>
+        <tr>
+            <td>
+                <%= i+1%>
+            </td>
+            <td>
+                <%= product[i].name %>
+            </td>
+            <td>
+                <%= product[i].price %>
+            </td>
+            <td>
+                <%= product[i].description %>
+            </td>
+            <td>
+                <a href="/edit-product/<%= product[i]._id %>">Edit</a>
+                <a href="/delete-product/<%= product[i]._id %>">Delete</a>
+            </td>
+        </tr>
+</table>

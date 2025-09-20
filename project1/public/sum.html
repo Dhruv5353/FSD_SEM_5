@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sum Process</title>
+  </head>
+  <body>
+    <form method="get" action="/sum">
+      No1:
+      <input
+        type="text"
+        placeholder="Enter No1"
+        autocomplete="off"
+        name="a"
+        required
+      />
+      No2:
+      <input
+        type="text"
+        placeholder="Enter No2"
+        autocomplete="off"
+        name="b"
+        required
+      />
+      <input type="submit" value="Submit" onclick="printSum()" />
+    </form>
+
+    <p id="sumValue"> </p>
+  </body>
+
+  <script>
+
+    function printSum() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const a = parseInt(urlParams.get("a"));
+      const b = parseInt(urlParams.get("b"));
+      const sum = a + b;
+      document.getElementById("sumValue").innerText = `Sum is: ${sum}`;
+    }
+
+  </script>
+</html>

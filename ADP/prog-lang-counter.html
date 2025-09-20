@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Counter</title>
+        <style>
+            body {
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                background: #f5f6fa;
+            }
+            .card {
+                background: #fff;
+                border-radius: 16px;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+                padding: 32px 40px;
+                min-width: 340px;
+                text-align: center;
+            }
+            .button-row {
+                display: flex;
+                gap: 16px;
+                justify-content: center;
+                margin-bottom: 24px;
+            }
+            .button-row button {
+                padding: 10px 20px;
+                font-size: 1rem;
+                border: none;
+                border-radius: 6px;
+                background: #0078d4;
+                color: #fff;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+            .button-row button:hover {
+                background: #005fa3;
+            }
+            .counts-row {
+                display: flex;
+                gap: 24px;
+                justify-content: center;
+                margin-top: 16px;
+            }
+            .count-card {
+                background: #f0f4f8;
+                border-radius: 8px;
+                padding: 12px 18px;
+                min-width: 80px;
+            }
+            .count-label {
+                font-size: 0.95rem;
+                color: #555;
+                margin-bottom: 4px;
+            }
+            .count-value {
+                font-size: 1.3rem;
+                font-weight: bold;
+                color: #222;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <h1>Programming Language Counter</h1>
+            <div class="button-row">
+                <button id="js">JavaScript</button>
+                <button id="py">Python</button>
+                <button id="java">Java</button>
+                <button id="cpp">C++</button>
+            </div>
+            <div class="counts-row">
+                <div class="count-card">
+                    <div class="count-label">JavaScript</div>
+                    <div class="count-value" id="jsCount">0</div>
+                </div>
+                <div class="count-card">
+                    <div class="count-label">Python</div>
+                    <div class="count-value" id="pyCount">0</div>
+                </div>
+                <div class="count-card">
+                    <div class="count-label">Java</div>
+                    <div class="count-value" id="javaCount">0</div>
+                </div>
+                <div class="count-card">
+                    <div class="count-label">C++</div>
+                    <div class="count-value" id="cppCount">0</div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const counts = {
+                js: 0,
+                py: 0,
+                java: 0,
+                cpp: 0,
+            };
+
+            function updateDisplay() {
+                document.getElementById("jsCount").textContent = counts.js;
+                document.getElementById("pyCount").textContent = counts.py;
+                document.getElementById("javaCount").textContent = counts.java;
+                document.getElementById("cppCount").textContent = counts.cpp;
+            }
+
+            document.getElementById("js").onclick = () => {
+                counts.js++;
+                updateDisplay();
+            };
+            document.getElementById("py").onclick = () => {
+                counts.py++;
+                updateDisplay();
+            };
+            document.getElementById("java").onclick = () => {
+                counts.java++;
+                updateDisplay();
+            };
+            document.getElementById("cpp").onclick = () => {
+                counts.cpp++;
+                updateDisplay();
+            };
+
+            function randomIncrement() {
+                const langs = ["js", "py", "java", "cpp"];
+                const idx = Math.floor(Math.random() * langs.length);
+                counts[langs[idx]]++;
+                updateDisplay();
+            }
+
+            setInterval(randomIncrement, 1000);
+            updateDisplay();
+        </script>
+    </body>
+</html>

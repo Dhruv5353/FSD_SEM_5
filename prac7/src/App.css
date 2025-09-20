@@ -1,0 +1,402 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  background: #2c3e50;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hamburger-menu:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger-line.open:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100vh;
+  background: #34495e;
+  color: white;
+  transition: left 0.3s ease;
+  z-index: 999;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-header {
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2c3e50;
+}
+
+.sidebar-header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Navigation List */
+.nav-list {
+  list-style: none;
+  padding: 1rem 0;
+}
+
+.nav-list li {
+  margin-bottom: 0.5rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left-color: #3498db;
+}
+
+.nav-link.active {
+  background-color: #3498db;
+  border-left-color: #2980b9;
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+.nav-text {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Main Content */
+.main-content {
+  margin-top: 70px;
+  padding: 2rem;
+  transition: margin-left 0.3s ease;
+  min-height: calc(100vh - 70px);
+}
+
+.content-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content-section h1 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.content-section p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Feature Cards */
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.card p {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.portfolio-item {
+  background: #3498db;
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Contact Info */
+.contact-info {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.contact-info p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Blog Posts */
+.blog-posts {
+  margin-top: 2rem;
+}
+
+.blog-post {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.blog-post h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+/* Settings */
+.settings-options {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 6px;
+}
+
+.setting-item label {
+  font-weight: 600;
+  color: #2c3e50;
+  min-width: 120px;
+}
+
+.setting-item select,
+.setting-item input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Lists */
+ul {
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (min-width: 769px) {
+  .hamburger-menu {
+    display: none;
+  }
+
+  .sidebar {
+    position: relative;
+    left: 0;
+    width: 280px;
+    height: calc(100vh - 70px);
+    margin-top: 70px;
+  }
+
+  .sidebar-overlay {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 280px;
+  }
+
+  .close-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 1.2rem;
+  }
+
+  .content-section h1 {
+    font-size: 2rem;
+  }
+
+  .feature-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 1rem;
+  }
+
+  .content-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .sidebar {
+    width: 280px;
+  }
+}

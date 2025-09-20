@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time Voting System</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .voting-container {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 500px;
+        width: 100%;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 2.5em;
+        font-weight: 300;
+      }
+
+      .poll-section {
+        margin-bottom: 40px;
+      }
+
+      .vote-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+      }
+
+      .vote-btn {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        padding: 15px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .vote-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .vote-btn:active {
+        transform: translateY(-1px);
+      }
+
+      .results-section {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 25px;
+        margin-top: 20px;
+      }
+
+      .results-title {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 1.8em;
+        font-weight: 400;
+      }
+
+      .result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding: 15px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .language-name {
+        font-weight: 600;
+        color: #333;
+        font-size: 1.1em;
+      }
+
+      .vote-count {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        min-width: 50px;
+      }
+
+      .real-time-indicator {
+        margin-top: 20px;
+        color: #666;
+        font-style: italic;
+        font-size: 0.9em;
+      }
+
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="voting-container">
+      <h1>Vote for Your Favorite Language</h1>
+
+      <div class="poll-section">
+        <div class="vote-buttons">
+          <button class="vote-btn" onclick="vote('JavaScript')">
+            JavaScript
+          </button>
+          <button class="vote-btn" onclick="vote('Python')">Python</button>
+          <button class="vote-btn" onclick="vote('Java')">Java</button>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <h2 class="results-title">Live Results</h2>
+
+        <div class="result-item">
+          <span class="language-name">JavaScript:</span>
+          <span class="vote-count" id="javascript-count">0</span>
+        </div>
+
+        <div class="result-item">
+          <span class="language-name">Python:</span>
+          <span class="vote-count" id="python-count">0</span>
+        </div>
+
+        <div class="result-item">
+          <span class="language-name">Java:</span>
+          <span class="vote-count" id="java-count">0</span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Votes object to keep track of current vote counts
+      const votes = {
+        JavaScript: 0,
+        Python: 0,
+        Java: 0,
+      };
+
+      // Function to handle voting
+      function vote(language) {
+        votes[language]++;
+        updateVotes();
+
+        // Add visual feedback
+        const button = event.target;
+        button.style.transform = "scale(0.95)";
+        setTimeout(() => {
+          button.style.transform = "";
+        }, 150);
+      }
+
+      // Function to update vote counts in the UI
+      function updateVotes() {
+        document.getElementById("javascript-count").textContent =
+          votes.JavaScript;
+        document.getElementById("python-count").textContent = votes.Python;
+        document.getElementById("java-count").textContent = votes.Java;
+      }
+
+      // Simulate real-time voting from other users
+      setInterval(() => {
+        const languages = ["JavaScript", "Python", "Java"];
+        const randomLanguage =
+          languages[Math.floor(Math.random() * languages.length)];
+
+        // Random chance of a vote coming in (30% chance every 2 seconds)
+        if (Math.random() < 0.3) {
+          votes[randomLanguage]++;
+          updateVotes();
+
+          // Add visual indication of real-time update
+          const countElement = document.getElementById(
+            randomLanguage.toLowerCase() + "-count"
+          );
+          countElement.style.animation = "none";
+          setTimeout(() => {
+            countElement.style.animation = "pulse 0.5s ease-in-out";
+          }, 10);
+        }
+      }, 2000);
+
+      // Initialize the display
+      updateVotes();
+    </script>
+  </body>
+</html>
